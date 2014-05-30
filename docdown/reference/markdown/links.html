@@ -1,0 +1,35 @@
+<!DOCTYPE html><html><head><title>Links</title><meta charset="utf-8"/><script type="text/javascript" src="../../assets/jquery-1.10.2.js"></script><script type="text/javascript" src="../../assets/jquery-ui-1.10.4.js"></script><script type="text/javascript" src="../../assets/highlight.js"></script><link type="text/css" href="../../assets/highlight-default.css" rel="stylesheet"/><script type="text/javascript" src="../../assets/quickdoc.js"></script><link type="text/css" href="../../assets/quickdoc.css" rel="stylesheet"/><script>hljs.initHighlightingOnLoad();</script></head><body><div id="side"><div id="header"><p><a href="../../index.html">Docdown Doclet</a></p></div><div id="content"><div class="nav"><ul><li><a href="../doc.html">Witting documentation</a></li></ul><ul><li><a href="index.html">Markdown reference</a></li><ul><li><a href="header.html">Headers</a></li></ul><ul><li><span class="highlighted">Links</span></li></ul><ul><li><a href="image.html">Images</a></li></ul><ul><li><a href="emphasis.html">Emphasis</a></li></ul><ul><li><a href="lists.html">Lists</a></li></ul><ul><li><a href="code.html">Code</a></li></ul><ul><li><a href="samples.html">Sample Code</a></li></ul></ul></div></div></div><div id="main"><div id="header"><p><a href="../index.html">Reference</a><a href="../../javadoc/index.html">Javadoc</a></p></div><div id="content"><div class="content"><h1>Links</h1><p>Links can have 3 forms:</p><h3>Inline link:</h3>
+<pre><code>[github](http://www.github.com)
+</code></pre><p>Example:</p><p><a href="http://www.github.com">github</a></p><h3>Wiki Style link:</h3>
+<pre><code>[[http://www.github.com]]
+</code></pre><p>Example:</p><p><a href="./http%3A%2F%2Fwww.github.com.html">http://www.github.com</a></p><h3>Reference link:</h3>
+<pre><code>[github home page][github]
+</code></pre><p>And somewhere else in the page:</p>
+<pre><code>[github]: http://www.github.com
+</code></pre><p>Example:</p><p><a href="http://www.github.com">github home page</a></p><h2>Links to Markdown pages or other resources</h2><p>Markdown pages can be referenced with the page file if not ambiguous.</p>
+<pre><code class="no-highlight">See [[doc.md]]
+</code></pre><p>Example:</p><p>See <a href="../doc.html">Writing documentation</a></p><p>Reference can be relative to the page directory:</p>
+<pre><code>link to [file in img directory](img/uml.png)
+</code></pre><p>Example:</p><p>link to <a href="img/uml.png">file in img directory</a></p><p>Use absolute path for other files:</p>
+<pre><code class="no-highlight">See [[/reference/doc.md]]
+</code></pre><p>Example:</p><p>See <a href="../doc.html">Writing documentation</a></p><h2>Links to javadoc entries</h2><p>Generated javadoc pages can be referenced from markup pages.</p><h3>Packages</h3><p>Reference to a package is done using the qualified package name:</p>
+<pre><code>[[com.parrot.docdown.generator]]
+</code></pre><p>Example:</p><p><a href="../../javadoc/com/parrot/docdown/generator/package-summary.html">com.parrot.docdown.generator</a></p><h3>Classes</h3><p>Reference to a class is done using the simple class name if not ambiguous:</p>
+<pre><code class="no-highlight">class [[DocdownOption]]
+</code></pre><p>Example:</p><p>class <a href="../../javadoc/com/parrot/docdown/DocdownOption.html">DocdownOption</a></p>
+<pre><code class="no-highlight">class [[com.parrot.docdown.DocdownOption]]
+</code></pre><p>Reference to a class can also be done using the full qualified class name:</p><p>Example:</p><p>class <a href="../../javadoc/com/parrot/docdown/DocdownOption.html">DocdownOption</a></p><h3>Class fields</h3><p>Class fields are referenced using the class name reference, followed by # and the field name:</p>
+<pre><code class="no-highlight">field [[DocdownOption#title]]
+</code></pre><p>Example:</p><p>field <a href="../../javadoc/com/parrot/docdown/DocdownOption.html#title">DocdownOption.title</a></p><p>Enum values are referenced like fields.</p><h3>Class methods</h3><p>Class methods are referenced using the class name reference, followed by # and the method name if not ambiguous:</p>
+<pre><code class="no-highlight">method [[DocdownOption#validOptions]]
+</code></pre><p>Example:</p><p>method <a href="../../javadoc/com/parrot/docdown/DocdownDoclet.html#validOptions(java.lang.String[][], com.sun.javadoc.DocErrorReporter)">DocdownDoclet.validOptions(String[][], DocErrorReporter)</a></p><p>If ambiguous, the method parameters type can be specified, either unqualified <code>no-highlight
+method [[DocdownOption#validOptions(String[][], DocErrorReporter)]]]
+</code></p><p>Example:</p><p>method <a href="../../javadoc/com/parrot/docdown/DocdownDoclet.html#validOptions(java.lang.String[][], com.sun.javadoc.DocErrorReporter)">DocdownDoclet.validOptions(String[][], DocErrorReporter)</a>]</p><p>or fully qualified</p>
+<pre><code class="no-highlight">method [[DocdownOption#validOptions(java.lang.String[][], com.sun.javadoc.DocErrorReporter)]]]
+</code></pre><p>Example:</p><p>method <a href="../../javadoc/com/parrot/docdown/DocdownDoclet.html#validOptions(java.lang.String[][], com.sun.javadoc.DocErrorReporter)">DocdownDoclet.validOptions(String[][], DocErrorReporter)</a>]</p><p>Inner classes must always be qualified with the outer class name.</p><p><strong>Note</strong>:</p><p>Due to limitation in the markdown parser, inline links to methods are not recognizes as links if they contains spaces or parenthesis. To create a inline link to a method while specifying its parameters, parenthesis must be escaped with <code>\</code> and parameters <strong>must not</strong> be separated by spaces:</p>
+<pre><code class="no-highlight">method [validOptions](DocdownDoclet#validOptions\(String[][],DocErrorReporter\))
+</code></pre><p>Example:</p><p>method <a href="../../javadoc/com/parrot/docdown/DocdownDoclet.html#validOptions(java.lang.String[][], com.sun.javadoc.DocErrorReporter)">validOptions</a></p><p>Parenthesis escape are not require for reference links, but as in inline links parameters <strong>must not</strong> be separated by spaces:</p>
+<pre><code class="no-highlight">method [validOptions][](DocdownDoclet#validOptions\(String[][],DocErrorReporter\))
+
+[validOptions]: DocdownDoclet#validOptions(String[][],DocErrorReporter)
+</code></pre><p>Example:</p><p>method <a href="../../javadoc/com/parrot/docdown/DocdownDoclet.html#validOptions(java.lang.String[][], com.sun.javadoc.DocErrorReporter)">validOptions</a></p><div class="footer">Generated by <a href="https://github.com/nicolaschriste/docdown">Docdown 0.3.0</a></div></div></div></div><script>init();</script></body></html>
